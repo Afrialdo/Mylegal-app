@@ -1,3 +1,4 @@
 flask
-werkzeug
+flask_mail
+fpdf
 
