@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Legal Job</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: #fff;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #34495e;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Edit Legal Job</h2>
+  <form method="POST">
+    <label for="judul">Judul Peraturan</label>
+    <input type="text" name="judul" id="judul" value="{{ job.judul }}" required>
+
+    <label for="pasal">Pasal</label>
+    <input type="text" name="pasal" id="pasal" value="{{ job.pasal }}" required>
+
+    <label for="isi">Isi</label>
+    <textarea name="isi" id="isi" required>{{ job.isi }}</textarea>
+
+    <label for="penjelasan">Penjelasan</label>
+    <textarea name="penjelasan" id="penjelasan" required>{{ job.penjelasan }}</textarea>
+
+    <button type="submit">🔄 Update</button>
+  </form>
+
+  <a class="back-link" href="{{ url_for('crew_dashboard') }}">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>

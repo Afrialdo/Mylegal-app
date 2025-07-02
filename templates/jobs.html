@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Jobs - My Legal Assistance</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e6f0fa, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    h2, h3 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      color: #34495e;
+    }
+    select, input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #217dbb;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    #token-section {
+      display: none;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+    }
+    .nav-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2e86de;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #145a86;
+    }
+    .crew-section {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px dashed #ccc;
+    }
+  </style>
+  <script>
+    function handleCrewChange(select) {
+      const section = document.getElementById('token-section');
+      section.style.display = select.value === 'Yes' ? 'block' : 'none';
+    }
+
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const error = params.get("error");
+
+      if (error === "invalid_token") {
+        alert("❌ Invalid token. Please try again.");
+      } else if (error === "empty_token") {
+        alert("⚠️ Please enter a token.");
+      } else if (error === "unauthorized") {
+        alert("🔒 Unauthorized access. Please enter a valid token.");
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Hello, {{ user.email }}</h2>
+    <h3>Your Submitted Legal Jobs</h3>
+
+    {% if jobs %}
+      <ul>
+        {% for job in jobs %}
+          <li><strong>{{ job.case }}</strong> on {{ job.date }} ({{ job.name }})</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You haven't submitted any jobs yet.</p>
+    {% endif %}
+
+    <div class="crew-section">
+      <label for="crew">Are you a crew?</label>
+      <select id="crew" onchange="handleCrewChange(this)">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+
+      <div id="token-section">
+        <form method="POST" action="/verify_token">
+          <label for="token">Enter Crew Token:</label>
+          <input type="text" name="token" id="token" required>
+          <button type="submit">Submit Token</button>
+        </form>
+      </div>
+    </div>
+
+    {% if session.get('is_crew') %}
+      <a class="nav-link" href="{{ url_for('crew_dashboard') }}">🛠️ Go to Crew Dashboard</a>
+    {% endif %}
+
+    <br>
+    <a class="nav-link" href="{{ url_for('dashboard') }}">⬅️ Back to Dashboard</a>
+  </div>
+
+  <div class="footer">
+    &copy; MyLegalAssistance — Powered by Afrialdo Siagian
+  </div>
+</body>
+</html>

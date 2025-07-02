@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="max-w-6xl mx-auto mt-10">
+  <h2 class="text-2xl font-bold mb-6 text-center">Admin Dashboard</h2>
+
+  <!-- Users Table -->
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold mb-4">Registered Users</h3>
+    <div class="overflow-x-auto">
+      <table class="min-w-full table-auto bg-white border rounded shadow">
+        <thead class="bg-blue-600 text-white">
+          <tr>
+            <th class="px-4 py-2">ID</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Admin?</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr class="border-t text-center">
+            <td class="px-4 py-2">{{ user.id }}</td>
+            <td class="px-4 py-2">{{ user.email }}</td>
+            <td class="px-4 py-2">{{ 'Yes' if user.is_admin else 'No' }}</td>
+            <td class="px-4 py-2 space-x-2">
+              <a href="/admin/delete-user/{{ user.id }}" class="text-red-500 hover:underline">Delete</a>
+              {% if not user.is_admin %}
+              <a href="/admin/promote-user/{{ user.id }}" class="text-green-600 hover:underline">Promote</a>
+              {% else %}
+              <a href="/admin/demote-user/{{ user.id }}" class="text-yellow-600 hover:underline">Demote</a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Legal Cases Table -->
+  <div>
+    <h3 class="text-xl font-semibold mb-4">Submitted Cases</h3>
+    <div class="overflow-x-auto">
+      <table class="min-w-full table-auto bg-white border rounded shadow">
+        <thead class="bg-green-600 text-white">
+          <tr>
+            <th class="px-4 py-2">ID</th>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Case</th>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Phone</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for case in cases %}
+          <tr class="border-t text-center">
+            <td class="px-4 py-2">{{ case.id }}</td>
+            <td class="px-4 py-2">{{ case.name }}</td>
+            <td class="px-4 py-2">{{ case.case }}</td>
+            <td class="px-4 py-2">{{ case.date }}</td>
+            <td class="px-4 py-2">{{ case.email }}</td>
+            <td class="px-4 py-2">{{ case.phone }}</td>
+            <td class="px-4 py-2 space-x-2">
+              <a href="/admin/delete-case/{{ case.id }}" class="text-red-500 hover:underline">Delete</a>
+              <a href="/admin/export-case/{{ case.id }}" class="text-blue-500 hover:underline">Export PDF</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

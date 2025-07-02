@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="max-w-md mx-auto p-6 bg-white rounded shadow-md mt-10">
+  <h2 class="text-xl font-bold mb-4 text-center">Login to My Legal Assistance</h2>
+  <form method="POST" action="/login" class="space-y-4">
+    <input type="email" name="email" placeholder="Email" required class="w-full border px-4 py-2 rounded" />
+    <input type="password" name="password" placeholder="Password" required class="w-full border px-4 py-2 rounded" />
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Login</button>
+  </form>
+  <div class="text-center mt-4">
+    <a href="/forgot-password" class="text-blue-600 hover:underline">Forgot Password?</a> |
+    <a href="/register" class="text-blue-600 hover:underline">Register</a>
+  </div>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="mt-4">
+        {% for message in messages %}
+          <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded mb-2 text-center">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</section>
+{% endblock %}
+

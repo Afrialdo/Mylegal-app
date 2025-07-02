@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- 🧭 Dashboard Welcome -->
+<section class="max-w-xl mx-auto mt-10 text-center">
+  <h1 class="text-2xl font-bold">Welcome, {{ user.email }}</h1>
+  <p class="text-gray-600">Submit your legal service request below.</p>
+</section>
+
+<!-- 📝 Legal Services Form -->
+<section class="max-w-xl mx-auto p-6 mt-6 bg-white rounded shadow-md">
+  <h2 class="text-lg font-bold text-center mb-4">Legal and Consultation Services</h2>
+  <form method="POST" action="/submit-case" class="space-y-3">
+    <input type="text" name="name" placeholder="Name" required class="w-full border px-3 py-2 rounded" />
+    <select name="case" required class="w-full border px-3 py-2 rounded">
+      <option value="">-- Select Case Type --</option>
+      <option value="Perdata">Perdata</option>
+      <option value="Pidana">Pidana</option>
+    </select>
+    <input type="text" name="date" placeholder="Date of Incident" required class="w-full border px-3 py-2 rounded" />
+    <input type="text" name="ktp" placeholder="KTP Number" required class="w-full border px-3 py-2 rounded" />
+    <input type="email" name="email" value="{{ user.email }}" readonly class="w-full border px-3 py-2 rounded bg-gray-100" />
+    <input type="text" name="phone" placeholder="Phone/WhatsApp" required class="w-full border px-3 py-2 rounded" />
+    <button type="submit" class="w-full bg-green-600 text-white px-4 py-2 rounded">Submit Case</button>
+  </form>
+</section>
+
+<!-- 🔓 Logout Link -->
+<div class="text-center mt-6">
+  <a href="{{ url_for('logout') }}" class="text-red-600 hover:underline">Logout</a>
+</div>
+<script>
+function toggleInfo() {
+  const box = document.getElementById('userInfoBox');
+  box.classList.toggle('hidden');
+}
+</script>
+{% endblock %}

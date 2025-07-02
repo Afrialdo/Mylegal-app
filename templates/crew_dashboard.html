@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crew Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f4f8;
+      margin: 0; padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, textarea, button {
+      width: 100%; margin: 10px 0;
+      padding: 10px; border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>📋 Submit Legal Draft</h2>
+  <form method="POST">
+    <input type="text" name="judul" placeholder="Judul Peraturan" required>
+    <input type="text" name="pasal" placeholder="Pasal" required>
+    <textarea name="isi" placeholder="Isi" required></textarea>
+    <textarea name="penjelasan" placeholder="Penjelasan" required></textarea>
+    <button type="submit">💾 Save Job</button>
+  </form>
+
+  <h3>📄 Your Drafts</h3>
+  {% if jobs %}
+  <table>
+    <tr>
+      <th>No</th>
+      <th>Judul</th>
+      <th>Pasal</th>
+      <th>Actions</th>
+    </tr>
+    {% for job in jobs %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ job['judul'] }}</td>
+      <td>{{ job['pasal'] }}</td>
+      <td>
+        <a href="{{ url_for('edit_job', job_id=job['id']) }}">✏️ Edit</a> |
+        <a href="https://wa.me/?text={{ job['judul'] }}%20Pasal:%20{{ job['pasal'] }}%0A{{ job['isi'] }}%0A{{ job['penjelasan'] }}" target="_blank">📤 WhatsApp</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>No drafts saved yet.</p>
+  {% endif %}
+</div>
+</body>
+</html>

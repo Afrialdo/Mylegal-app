@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Peraturan Perundang-undangan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .law-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .law-item h3 {
+      margin: 0;
+      color: #16a085;
+    }
+
+    .law-item p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📜 Peraturan Perundang-undangan Digital</h2>
+
+  <div class="law-item">
+    <h3>UU No. 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik (ITE)</h3>
+    <p>Mengatur tentang informasi elektronik, transaksi online, dan sanksi pidana terhadap kejahatan digital.</p>
+  </div>
+
+  <div class="law-item">
+    <h3>UU No. 27 Tahun 2022 tentang Perlindungan Data Pribadi (PDP)</h3>
+    <p>Menetapkan kewajiban pelaku usaha melindungi data pribadi dan sanksi bagi pelanggaran.</p>
+  </div>
+
+  <div class="law-item">
+    <h3>PerMA No. 3 Tahun 2018 tentang Administrasi Perkara di Pengadilan secara Elektronik</h3>
+    <p>Menjadi dasar hukum penggunaan e-Court, e-Filing dan sistem persidangan elektronik di pengadilan.</p>
+  </div>
+
+  <a href="{{ url_for('index') }}" class="back-link">⬅ Kembali ke Halaman Login</a>
+</div>
+
+</body>
+</html>

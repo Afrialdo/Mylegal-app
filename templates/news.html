@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Berita / News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .news-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .news-item h3 {
+      margin: 0;
+      color: #2980b9;
+    }
+
+    .news-item p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📰 Berita / News</h2>
+
+  <div class="news-item">
+    <h3>Hukum Digital dan Perlindungan Data Pribadi</h3>
+    <p>UU PDP mulai diberlakukan penuh tahun ini. Setiap perusahaan wajib melindungi data pelanggan mereka.</p>
+  </div>
+
+  <div class="news-item">
+    <h3>Transformasi Hukum di Era AI</h3>
+    <p>Teknologi AI semakin digunakan dalam analisis hukum, riset, dan prediksi hasil sidang.</p>
+  </div>
+
+  <div class="news-item">
+    <h3>E-Court dan E-Filing di Pengadilan Indonesia</h3>
+    <p>Mahkamah Agung mendorong digitalisasi dengan sistem e-Court untuk mempermudah akses keadilan.</p>
+  </div>
+
+  <a href="{{ url_for('index') }}" class="back-link">⬅ Kembali ke Halaman Login</a>
+</div>
+
+</body>
+</html>
