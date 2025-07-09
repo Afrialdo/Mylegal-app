@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f1f5f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .sidebar {
+      width: 100%;
+      max-width: 300px;
+      height: 100vh;
+      background: white;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1050;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .sidebar h4 {
+      padding: 20px;
+      margin: 0;
+      background: #0d6efd;
+      color: white;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .sidebar a:hover {
+      background: #f0f0f0;
+    }
+
+    .menu-btn {
+      font-size: 26px;
+      margin: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Menu button -->
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <h4>⚖️ Legal Menu</h4>
+  <a href="/user">👤 User</a>
+  <a href="/qa">❓ Q&A</a>
+  <a href="/settings">⚙️ Settings</a>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
+  }
+</script>
+
+</body>
+</html>

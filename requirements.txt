@@ -1,4 +1,4 @@
 flask
-flask_mail
-fpdf
+flask_sqlalchemy
+gunicorn
 

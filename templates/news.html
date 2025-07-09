@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Berita / News</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="text-2xl font-bold mb-4">📰️ Berita Hukum</h2>
+<p>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -50,11 +48,9 @@
       font-weight: bold;
     }
   </style>
-</head>
 <body>
 
 <div class="container">
-  <h2>📰 Berita / News</h2>
 
   <div class="news-item">
     <h3>Hukum Digital dan Perlindungan Data Pribadi</h3>
@@ -71,8 +67,9 @@
     <p>Mahkamah Agung mendorong digitalisasi dengan sistem e-Court untuk mempermudah akses keadilan.</p>
   </div>
 
-  <a href="{{ url_for('index') }}" class="back-link">⬅ Kembali ke Halaman Login</a>
+  <a href="/" class="back-link">⬅ Back</a>
 </div>
 
 </body>
-</html>
+</p>
+{% endblock %}

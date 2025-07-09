@@ -1,53 +1,89 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- 🔒 Login form displayed first -->
-{% if not session.get('user_id') %}
-<section class="max-w-md mx-auto p-6 bg-white rounded shadow-md mt-10">
-  <h2 class="text-xl font-bold mb-4 text-center">Login to My Legal Assistance</h2>
-  <form method="POST" action="/login" class="space-y-4">
-    <input type="email" name="email" placeholder="Email" required class="w-full border px-4 py-2 rounded" />
-    <input type="password" name="password" placeholder="Password" required class="w-full border px-4 py-2 rounded" />
-    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Login</button>
-  </form>
-  <div class="text-center mt-4">
-    <a href="/forgot-password" class="text-blue-600 hover:underline">Forgot Password?</a> |
-    <a href="/register" class="text-blue-600 hover:underline">Register</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Intelligence Updates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Title -->
+  <div class="p-4 bg-blue-900 text-white text-xl font-bold">
+    Legal Intelligence Updates
   </div>
 
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <div class="mt-4">
-        {% for message in messages %}
-          <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded mb-2 text-center">
-            {{ message }}
-          </div>
-        {% endfor %}
+  <!-- Horizontal Scroll Section -->
+  <div class="overflow-x-auto whitespace-nowrap scroll-smooth p-4 space-x-4 flex">
+    
+    <!-- Card 1 -->
+    <div class="inline-block bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+      <img src="{{ url_for('static', filename='images/Legal_Update.png') }}" alt="Legal Update Image" class="rounded-t-lg w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Aturan Kekayaan Intelektual</h2>
+        <p class="text-sm text-gray-600">04 Juli 2025</p>
+        <p class="text-sm mt-2 text-gray-700">Jaminan Fidusia Difinalisasi.</p>
+        <p> Dampak: 🟡 Menengah</p>
       </div>
-    {% endif %}
-  {% endwith %}
-</section>
-{% endif %}
+    </div>
+    
+    <!-- Card 2 -->
+    <div class="inline-block bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+      <img src="{{ url_for('static', filename='images/business_tax.jpg') }}" alt="Legal Update Image" class="rounded-t-lg w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Perubahan Pajak Usaha</h2>
+        <p class="text-sm text-gray-600">03 Juli 2025</p>
+        <p class="text-sm mt-2 text-gray-700">PPN UMKM terbaru mulai berlaku.</p> 
+        <p> Dampak: 🔴 Tinggi</p>
+      </div>
+    </div>
 
-<!-- 🔷 Legal Service Form visible only after login -->
-{% if session.get('user_id') %}
-<section class="max-w-xl mx-auto p-6 bg-white shadow-md mt-10">
-  <h2 class="text-lg font-bold text-center mb-4">Legal and Consultation Services</h2>
-  <form method="POST" action="/submit-case" class="space-y-3">
-    <input type="text" name="name" placeholder="Name" required class="w-full border px-3 py-2 rounded" />
-    <select name="case" required class="w-full border px-3 py-2 rounded">
-      <option value="">-- Select Case Type --</option>
-      <option value="Perdata">Perdata</option>
-      <option value="Pidana">Pidana</option>
-    </select>
-    <input type="text" name="date" placeholder="Date of Incident" required class="w-full border px-3 py-2 rounded" />
-    <input type="text" name="ktp" placeholder="KTP Number" required class="w-full border px-3 py-2 rounded" />
-    <input type="email" name="email" placeholder="Email Address" required class="w-full border px-3 py-2 rounded" />
-    <input type="text" name="phone" placeholder="Phone/WhatsApp" required class="w-full border px-3 py-2 rounded" />
-    <button type="submit" class="w-full bg-green-600 text-white px-4 py-2 rounded">Submit Case</button>
-  </form>
-</section>
-{% endif %}
+   <!-- Card 3 -->
+    <div class="inline-block bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+      <img src="{{ url_for('static', filename='images/data_privacy.png') }}" alt="Legal Update Image" class="rounded-t-lg w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Perlindungan Data Pribadi Diperkuat</h2>
+        <p class="text-sm text-gray-600">09 Juli 2025</p>
+        <p class="text-sm mt-2 text-gray-700">Pemberlakukan sanksi administratif.</p>
+        <p>Dampak: 🟠 Sedang</p>
+      </div>
+    </div>
+
+   <!-- Card 4 -->
+    <div class="inline-block bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+      <img src="{{ url_for('static', filename='images/fintech.png') }}" alt="Legal Update Image" class="rounded-t-lg w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800"> UU Fintech dan Pembayaran Digital</h2>
+        <p class="text-sm text-gray-600">08 Juli 2025</p>
+        <p class="text-sm mt-2 text-gray-700">RUU Fintech disahkan, mengatur batas bunga.</p> 
+        <p> Dampak: 🔴 Tinggi</p>
+      </div>
+    </div>
+
+
+   <!-- Card 5 -->
+    <div class="inline-block bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+      <img src="{{ url_for('static', filename='images/labor_law.png') }}" alt="Legal Update Image" class="rounded-t-lg w-full h-80 object-cover">
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Revisi UU Ketenagakerjaan</h2>
+        <p class="text-sm text-gray-600">07 Juli 2025</p>
+        <p class="text-sm mt-2 text-gray-700">Skema kontrak dan pesangon pekerja lepas.</p>
+        <p> Dampak: 🟡 Menengah</p>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Add more cards as needed -->
+  </div>
+
+</body>
+</html>
 
 <!-- 🔷 Quote or Introduction below form -->
 <section class="max-w-xl mx-auto p-6 mt-10 bg-gray-100 rounded shadow">

@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>About Us - My Legal Assistance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="text-2xl font-bold mb-4">ℹ️ Tentang</h2>
+<p>
   <style>
+    .justified-text {
+    text-align: justify;
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f8f9fa;
@@ -38,30 +39,46 @@
     .back-link:hover {
       text-decoration: underline;
     }
+    .nav-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2e86de;
+      font-weight: 600;
+      transition: color 0.3s ease;
+   }
+    .about-paragraph {
+    text-align: left;
+   }
+    .indented-paragraph {
+    text-indent: 18px;
+    text-align: justify;
+  }
   </style>
-</head>
 <body>
 
-<div class="container">
-  <h2>About Us</h2>
-  <p>
-    <strong>My Legal Assistance</strong> is a digital legal platform built to empower legal professionals,
-    students, and clients with seamless tools for drafting, reviewing, and sharing legal documents.
-    Our mission is to bridge traditional law practices with modern digital transformation.
+<div class="text-grey-600 font-bold mb-2">
+  <strong>About Us</strong>
+  <p class="indented-paragraph">
+     <a class="text-blue-600 font-bold mb-2">
+     ⚖️  My Legal Assistance </a>
+    <a class="justified-text"> is a digital legal platform built to empower legal professionals, students, and clients with 
+     seamless tools for drafting, reviewing, and sharing legal documents. Our mission is to bridge 
+     traditional law practices with modern digital transformation.
   </p>
-  <p>
+  <p class="indented-paragraph">
     In an era where technology is redefining every industry, we envision a legal system that is more
     efficient, transparent, and accessible. By integrating digital workflows, collaborative tools,
     and instant communication features (like PDF export and WhatsApp sharing), we help legal crews and
     clients work smarter, not harder.
   </p>
-  <p>
+  <p class="indented-paragraph">
     We are committed to building a secure, collaborative, and user-friendly legal assistance platform
     for the digital age — rooted in the values of integrity, innovation, and inclusivity.
   </p>
 
-  <a href="{{ url_for('jobs') }}" class="back-link">⬅ Back to Jobs</a>
+  <a class="back-link" href="/">⬅ Back</a>
 </div>
-
 </body>
-</html>
+</p>
+{% endblock %}

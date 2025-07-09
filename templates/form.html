@@ -1,0 +1,21 @@
+% extends 'dashboard.html' %}
+{% block content %}
+<!-- 🔷 Legal Service Form visible only after login -->
+{% if session.get('user_id') %}
+<section class="max-w-xl mx-auto p-6 bg-white shadow-md mt-10">
+  <h2 class="text-lg font-bold text-center mb-4">Legal and Consultation Services</h2>
+  <form method="POST" action="/submit-case" class="space-y-3">
+    <input type="text" name="name" placeholder="Name" required class="w-full border px-3 py-2 rounded" />
+    <select name="case" required class="w-full border px-3 py-2 rounded">
+      <option value="">-- Select Case Type --</option>
+      <option value="Perdata">Perdata</option>
+      <option value="Pidana">Pidana</option>
+    </select>
+    <input type="text" name="date" placeholder="Date of Incident" required class="w-full border px-3 py-2 rounded" />
+    <input type="text" name="ktp" placeholder="KTP Number" required class="w-full border px-3 py-2 rounded" />
+    <input type="email" name="email" placeholder="Email Address" required class="w-full border px-3 py-2 rounded" />
+    <input type="text" name="phone" placeholder="Phone/WhatsApp" required class="w-full border px-3 py-2 rounded" />
+    <button type="submit" class="w-full bg-green-600 text-white px-4 py-2 rounded">Submit Case</button>
+  </form>
+</section>
+{% endif %}

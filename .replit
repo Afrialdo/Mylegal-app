@@ -1,2 +1,5 @@
-run = "python3 app.py"
-app.run(host='0.0.0.0', port=81)
+entrypoint = "app.py"
+
+[interpreter]
+command = [ "python", "-u" ]
+
