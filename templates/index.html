@@ -3,17 +3,224 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <head>
+<!-- FontAwesome for the gavel icon -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+/* Gavel Button Styles */
+.floating-gavel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.floating-gavel:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.floating-gavel i {
+  font-size: 26px;
+  color: #6b4e31;
+}
+
+/* Animation */
+@keyframes shake {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0); }
+}
+
+.floating-gavel.shake {
+  animation: shake 0.4s ease;
+}
+</style>
+<div class="max-w-5xl mx-auto p-6 text-gray-800">
+
+  <!-- Page Title -->
+  <h1 class="text-3xl font-bold text-blue-900 mb-6 border-b pb-2">Action Tunnels</h1>
+  <p class="mb-6 text-gray-700">
+    Choose a secure channel below based on your legal issue. Each Action Tunnel provides a guided form to ensure your report or request is handled professionally and privately.
+  </p>
+
+  <!-- Tunnel Cards -->
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <!-- Tunnel Card -->
+    <a href="/tunnel/insurance" class="bg-white shadow hover:shadow-md rounded-lg p-5 border border-blue-100 transition">
+      <h3 class="text-lg font-bold text-blue-800 mb-2">📄 Insurance Claim Denial</h3>
+      <p class="text-sm text-gray-600">Submit complaint against rejected insurance claims or payment delays.</p>
+    </a>
+
+    <a href="/tunnel/cyber" class="bg-white shadow hover:shadow-md rounded-lg p-5 border border-blue-100 transition">
+      <h3 class="text-lg font-bold text-blue-800 mb-2">💻 Cyber Harassment</h3>
+      <p class="text-sm text-gray-600">Report online threats, fraud, or cyberbullying incidents.</p>
+    </a>
+
+    <a href="/tunnel/contract" class="bg-white shadow hover:shadow-md rounded-lg p-5 border border-blue-100 transition">
+      <h3 class="text-lg font-bold text-blue-800 mb-2">📑 Contract Dispute</h3>
+      <p class="text-sm text-gray-600">Raise issues regarding breached or unfair agreements.</p>
+    </a>
+
+    <a href="/tunnel/fraud" class="bg-white shadow hover:shadow-md rounded-lg p-5 border border-blue-100 transition">
+      <h3 class="text-lg font-bold text-blue-800 mb-2">⚖️ Business Fraud</h3>
+      <p class="text-sm text-gray-600">File a complaint regarding fraud or unethical business practices.</p>
+    </a>
+
+    <a href="/tunnel/whistle" class="bg-white shadow hover:shadow-md rounded-lg p-5 border border-blue-100 transition">
+      <h3 class="text-lg font-bold text-blue-800 mb-2">🕵️ Whistleblower Upload</h3>
+      <p class="text-sm text-gray-600">Securely upload documents to expose internal wrongdoing.</p>
+    </a>
+
+    <a href="/tunnel/privacy" class="bg-white shadow hover:shadow-md rounded-lg p-5 border border-blue-100 transition">
+      <h3 class="text-lg font-bold text-blue-800 mb-2">🔐 Data Privacy Violation</h3>
+      <p class="text-sm text-gray-600">Report misuse or leakage of your personal data.</p>
+    </a>
+
+  </div>
+</div>
+
+
+<div class="max-w-4xl mx-auto p-6 text-gray-800">
+
+  <!-- Title -->
+  <h1 class="text-3xl font-bold text-blue-900 mb-4 border-b pb-2">Victim Tunnels – Secure Legal Support Channel</h1>
+
+  <!-- Intro Paragraph -->
+  <p class="mb-6 leading-relaxed">
+    <strong>Victim Tunnel</strong> is an integrated support system developed under the <strong>My Legal Tunnels</strong> platform. 
+    It is designed specifically to assist individuals who have experienced injustice, discrimination, or abuse—especially in areas such as 
+    insurance denial, cyber harassment, and business fraud. The system provides a secure, confidential, and direct channel to submit legal complaints or requests for advice.
+  </p>
+
+  <!-- Image -->
+  <div class="mb-6">
+    <img src="{{ url_for('static', filename='images/Victim.png') }}" alt="Victim Tunnel Banner" class="w-full rounded-xl shadow">
+  </div>
+
+  <!-- Features Section -->
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    
+    <!-- Card 1 -->
+    <div class="bg-white border rounded-xl shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-800 mb-2">🔒 Confidential Reporting</h2>
+      <p>Victims can safely report incidents without fear of exposure. Data is encrypted and handled under strict confidentiality.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white border rounded-xl shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-800 mb-2">📄 Legal Draft Assistant</h2>
+      <p>The platform helps prepare draft complaints or letters that users can submit to authorities, insurance companies, or courts.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white border rounded-xl shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-800 mb-2">🤝 Human & Digital Support</h2>
+      <p>Both human advisors and automated legal tools are available to support victims 24/7.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-white border rounded-xl shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-800 mb-2">📤 File Upload & Evidence</h2>
+      <p>Victims can attach documents, screenshots, or videos as legal evidence securely via the upload feature.</p>
+    </div>
+  </div>
+
+  <!-- Final Call to Action -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600 shadow-sm">
+    <p class="text-md font-medium text-blue-800">
+      If you or someone you know needs legal help, <a href="/register" class="underline text-blue-600 hover:text-blue-800">register now</a> or
+      <a href="/contact" class="underline text-blue-600 hover:text-blue-800">contact us</a> for secure support via the Victim Tunnel.
+    </p>
+  </div>
+
+</div>
+<div class="max-w-4xl mx-auto p-6 text-gray-800">
+
+  <!-- Section Title -->
+  <h1 class="text-3xl font-bold text-blue-900 mb-6 border-b pb-2">Profile</h1>
+
+  <!-- About Description -->
+  <p class="mb-6 leading-relaxed">
+    <strong>My Legal Tunnels</strong> is a solo legal platform founded by Afrialdo Siagian, Bachelor of Law, specializing in
+    <span class="font-semibold text-blue-800">Economic Business Law</span> and <span class="font-semibold text-blue-800">Insurance Law</span>.
+    We provide trusted legal guidance for individuals, SMEs, and entrepreneurs navigating complex legal matters with confidence and clarity.
+  </p>
+
+  <!-- Vision & Mission Cards -->
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+
+    <!-- Vision Card -->
+    <div class="bg-white border rounded-xl shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-800 mb-3">Vision</h2>
+      <p>
+        To become a trusted source of legal support for business actors and policyholders, ensuring their rights and obligations are protected through accessible and ethical legal services.
+      </p>
+    </div>
+
+    <!-- Mission Card -->
+    <div class="bg-white border rounded-xl shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-800 mb-3">Mission</h2>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Provide clear and practical legal guidance in economic and insurance law matters.</li>
+        <li>Assist clients in resolving disputes efficiently, ethically, and professionally.</li>
+        <li>Promote legal literacy through timely updates and education.</li>
+        <li>Deliver personalized support tailored to each client’s legal needs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Legal Disclaimer Box -->
+  <div class="bg-gray-50 border-l-4 border-blue-700 p-4 rounded-md shadow-sm">
+    <h2 class="text-lg font-semibold text-blue-800 mb-2">Legal Disclaimer</h2>
+    <p class="text-sm leading-relaxed">
+      The content provided on this website is for informational purposes only and does not constitute formal legal advice.
+      While efforts are made to ensure accuracy, laws may change or be subject to interpretation.
+      No attorney-client relationship is formed through the use of this platform.
+      If you require personalized legal counsel, please seek a formal consultation.
+      All communication and data shared on this site are treated with confidentiality and in accordance with applicable data protection laws.
+    </p>
+  </div>
+
+</div>
+
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <div class="max-w-xl mx-auto p-4 bg-blue-900 text-white text-xl font-bold rounded shadow">
+    Our Core Values
+  </div>
+  <!-- 🔷 Quote or Introduction below form -->
+<div class="max-w-xl mx-auto p-10 bg-gray-100 rounded shadow">
+  <blockquote class="italic text-center text-gray-700">
+    "Justice delayed is justice denied. We are here to assist you with professionalism and care."
+  </blockquote>
+</div>
   <title>Legal Intelligence Updates</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
 
+
   <!-- Title -->
-  <div class="p-4 bg-blue-900 text-white text-xl font-bold">
-    Legal Intelligence Updates
+  <div class="max-w-xl mx-auto p-4 bg-blue-900 text-white text-xl font-bold rounded shadow">
+    Legal Updates
   </div>
 
   <!-- Horizontal Scroll Section -->
@@ -74,23 +281,25 @@
         <p> Dampak: 🟡 Menengah</p>
       </div>
     </div>
-
-
-
-
-
     <!-- Add more cards as needed -->
   </div>
-
+<!-- Floating Gavel Button -->
+<!-- Floating Gavel Button -->
+<div class="floating-gavel" onclick="strikeGavel()">
+  <i class="fas fa-gavel"></i>
+</div>
 </body>
 </html>
+<script>
+function strikeGavel() {
+  const btn = document.querySelector('.floating-gavel');
+  btn.classList.add('shake');
+  setTimeout(() => btn.classList.remove('shake'), 400);
 
-<!-- 🔷 Quote or Introduction below form -->
-<section class="max-w-xl mx-auto p-6 mt-10 bg-gray-100 rounded shadow">
-  <blockquote class="italic text-center text-gray-700">
-    "Justice delayed is justice denied. We are here to assist you with professionalism and care."
-  </blockquote>
-</section>
+  // Optional: do something else here (e.g., open a form/modal)
+  // alert("Legal action triggered!");
+}
+</script>
 
 <!-- 🔗 Footer with contact info -->
 <footer class="mt-10 text-center text-sm text-gray-600">

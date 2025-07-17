@@ -101,7 +101,11 @@ class LegalCase(db.Model):
     phone = db.Column(db.String(20))
 
 # Routes
-@app.route('/static/images/Legal_Update.png/business_tax.jpg/data_privacy.png/fintech.png/labor_law.png<path:filename>')
+@app.route('/hammer')
+def hammer():
+	return render_template('hammer.html')
+
+@app.route('/static/images/Legal_Update.png/business_tax.jpg/data_privacy.png/fintech.png/labor_law.png/Victim.png<path:filename>')
 def static_files(filename):
 	return send_from_directory('static/images', filename)
 
